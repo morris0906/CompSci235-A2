@@ -28,7 +28,7 @@ class Actor:
         if isinstance(colleague, Actor):
             self.__colleague.append(colleague)
 
-    def check_if_this_actor_worked_with_colleague(self, colleague):
+    def check_if_this_actor_worked_with(self, colleague):
         return colleague in self.__colleague
 
 
@@ -45,4 +45,5 @@ class TestActor:
         assert actor4.actor_full_name is None
         actor5 = Actor(42)
         assert actor5.actor_full_name is None
+
 
