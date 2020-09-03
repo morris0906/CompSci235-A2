@@ -73,22 +73,28 @@ class Movie:
         return f"<Movie {self.__movie_name}, {self.__release_year}>"
 
     def __eq__(self, other):
-        pass
+        return (self.__movie_name == other.__movie_name) and (self.__release_year == other.__release_year)
 
     def __lt__(self, other):
-        pass
+        if self.__movie_name != other.__movie_name:
+            return self.__movie_name < other.__movie_name
+        else:
+            return self.__release_year < other.__release_year
 
     def __hash__(self):
-        pass
+        return hash((self.__movie_name, self.__release_year))
 
     def add_actor(self, actor: Actor):
-        pass
+        self.__actors.append(actor)
 
     def remove_actor(self, actor: Actor):
-        pass
+        if actor in self.__actors:
+            self.__actors.remove(actor)
 
     def add_genre(self, genre: Genre):
-        pass
+        self.__genres.append(genre)
 
     def remove_genre(self, genre: Genre):
-        pass
+        if genre in self.__genres:
+            self.__genres.remove(genre)
+
