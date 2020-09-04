@@ -16,6 +16,10 @@ class Movie:
             self.__description: str
             self.__runtime: int
             self.__genres = []
+            self.__user_rating = ''
+            self.__ratings = ''
+            self.__metascore = ''
+            self.__votes = ''
 
     @property
     def title(self) -> str:
@@ -69,6 +73,38 @@ class Movie:
         else:
             self.__runtime = runtime
 
+    @property
+    def user_rating(self):
+        return self.__user_rating
+
+    @user_rating.setter
+    def user_rating(self, rating):
+        self.__user_rating = rating
+
+    @property
+    def metascore(self):
+        return self.__metascore
+
+    @metascore.setter
+    def metascore(self, score):
+        self.__metascore = score
+
+    @property
+    def votes(self):
+        return self.__votes
+
+    @votes.setter
+    def votes(self, votes):
+        self.__votes = votes
+
+    @property
+    def rating(self):
+        return self.__ratings
+
+    @rating.setter
+    def rating(self, ratings):
+        self.__ratings = ratings
+
     def __repr__(self):
         return f"<Movie {self.__movie_name}, {self.__release_year}>"
 
@@ -97,4 +133,3 @@ class Movie:
     def remove_genre(self, genre: Genre):
         if genre in self.__genres:
             self.__genres.remove(genre)
-

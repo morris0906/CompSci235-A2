@@ -24,6 +24,10 @@ class MovieFileCSVReader:
                 title = row['Title']
                 release_year = int(row['Year'])
                 movie = Movie(title, release_year)
+                movie.votes = row['Votes']
+                movie.metascore = row['Metascore']
+                movie.rating = row['Rating']
+                movie.description = row['Description']
                 self.__movies.append(movie)
                 director = Director(row['Director'])
                 if director not in self.__directors:
@@ -38,6 +42,7 @@ class MovieFileCSVReader:
                     genre = Genre(genre_splited)
                     if genre not in self.__genres:
                         self.__genres.append(genre)
+
 
 
 
@@ -64,3 +69,5 @@ print(f'number of unique movies: {len(dataset.dataset_of_movies)}')
 print(f'number of unique actors: {len(dataset.dataset_of_actors)}')
 print(f'number of unique directors: {len(dataset.dataset_of_directors)}')
 print(f'number of unique genres: {len(dataset.dataset_of_genres)}')
+a = dataset.dataset_of_movies[0]
+print(a, a.metascore, a.rating, a.votes, a.description)
