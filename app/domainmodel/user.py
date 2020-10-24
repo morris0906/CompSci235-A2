@@ -5,7 +5,7 @@ from app.domainmodel.review import Review
 class User:
     def __init__(self, user_name: str, password: str):
         if (user_name == "" or type(user_name) is not str) and \
-                    (password == "" or type(password) is not str):
+                (password == "" or type(password) is not str):
             self.__user_name = None
             self.__password = None
         else:
@@ -14,7 +14,6 @@ class User:
             self.__watched_movies = []
             self.__reviews = []
             self.__time_spent = 0
-
 
     def __repr__(self):
         return f"<User {self.__user_name}>"
@@ -76,7 +75,6 @@ class User:
         self.__reviews.append(review)
 
 
-
 class TestUserMethods:
 
     def test_init(self):
@@ -84,4 +82,3 @@ class TestUserMethods:
         user2 = User('aron', 'a4t5g5')
         users = [user1, user2]
         assert users[0] == user1
-

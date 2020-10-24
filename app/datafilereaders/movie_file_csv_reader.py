@@ -1,10 +1,10 @@
 import csv
 import re
 
-from domainmodel.movie import Movie
-from domainmodel.actor import Actor
-from domainmodel.genre import Genre
-from domainmodel.director import Director
+from app.domainmodel.movie import Movie
+from app.domainmodel.actor import Actor
+from app.domainmodel.genre import Genre
+from app.domainmodel.director import Director
 
 
 class MovieFileCSVReader:
@@ -32,7 +32,7 @@ class MovieFileCSVReader:
                 director = Director(row['Director'])
                 if director not in self.__directors:
                     self.__directors.append(director)
-                actors = re.split(", |,",row["Actors"])
+                actors = re.split(", |,", row["Actors"])
                 for actor_splited in actors:
                     actor = Actor(actor_splited)
                     if actor not in self.__actors:
@@ -42,9 +42,6 @@ class MovieFileCSVReader:
                     genre = Genre(genre_splited)
                     if genre not in self.__genres:
                         self.__genres.append(genre)
-
-
-
 
     @property
     def dataset_of_movies(self):
