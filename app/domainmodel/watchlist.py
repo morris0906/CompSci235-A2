@@ -1,4 +1,4 @@
-from domainmodel.movie import Movie
+from app.domainmodel.movie import Movie
 
 class WatchList:
     pass

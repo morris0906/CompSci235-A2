@@ -1,5 +1,5 @@
-from domainmodel.movie import Movie
-from domainmodel.review import Review
+from app.domainmodel.movie import Movie
+from app.domainmodel.review import Review
 
 
 class User:
