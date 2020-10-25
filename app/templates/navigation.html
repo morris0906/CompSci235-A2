@@ -4,16 +4,16 @@
     {% if 'username' in session %} Hello, {{ session['username'] }} {%
     endif %}
   </h2>-->
-  <a class="btn-nav" href="{{ url_for('home_bp.home') }}">Home</a>
-  <a class="btn-nav" href="{{ url_for('movies_bp.movies_by_genres') }}">Movies</a>
-
-
-  <!-- <div>
-    <h3 id="sub-nav-header">Browse by tag</h3>
-    {% for key in tag_urls %}
-      <a class="btn-nav" href="{{ tag_urls[key] }}">{{ key }}</a>
-    {% endfor %}
-  </div> -->
+  <a class="btn-nav
+    {%if active_page == 'home' %}
+        active
+    {%endif%}"
+     href="{{ url_for('home_bp.home') }}">Home</a>
+  <a class="btn-nav
+    {%if active_page == 'movies' %}
+      active
+    {%endif%}"
+     href="{{ url_for('movie_bp.movie_by_genres') }}">Movies</a>
 
   <div id="nav-footer">
     COMPSCI 235 Software Development Methodologies

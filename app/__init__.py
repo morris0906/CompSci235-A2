@@ -25,9 +25,9 @@ def create_app(test_config=None):
         data_path = app.config['TEST_DATA_PATH']
 
     # create memory repository
-    repo.repository_instance = MemoryRepository()
-    load_movies(data_path, repo.repository_instance)
-    load_users(data_path2, repo.repository_instance)
+    repo.repo_instance = MemoryRepository()
+    load_movies(data_path, repo.repo_instance)
+    load_users(data_path2, repo.repo_instance)
 
     with app.app_context():
         # Register blueprints.

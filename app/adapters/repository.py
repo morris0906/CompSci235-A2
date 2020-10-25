@@ -112,10 +112,10 @@ class AbstractRepository(abc.ABC):
 
     @abc.abstractmethod
     def add_director(self, director: Director):
-        """ Adds a Genre to the repository. """
+        """ Adds a Director to the repository. """
         raise NotImplementedError
 
     @abc.abstractmethod
     def get_directors(self) -> List[Director]:
-        """ Returns the Genres stored in the repository. """
+        """ Returns the Director stored in the repository. """
         raise NotImplementedError
