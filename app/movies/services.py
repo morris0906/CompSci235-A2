@@ -4,7 +4,8 @@ import app.adapters.repository as repo
 import app.utilities as util
 
 # Configure Blueprint.
-services_blueprint = Blueprint('services_bp', __name__)
+services_blueprint = Blueprint(
+    'services_bp', __name__)
 
 
 def get_genres_and_urls():
