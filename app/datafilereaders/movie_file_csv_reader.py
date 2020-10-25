@@ -28,6 +28,7 @@ class MovieFileCSVReader:
                 movie.metascore = row['Metascore']
                 movie.rating = row['Rating']
                 movie.description = row['Description']
+                movie.id = row['Rank']
                 self.__movies.append(movie)
                 director = Director(row['Director'])
                 if director not in self.__directors:

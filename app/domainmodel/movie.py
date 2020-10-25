@@ -20,6 +20,15 @@ class Movie:
             self.__ratings = ''
             self.__metascore = ''
             self.__votes = ''
+            self.__id: int
+
+    @property
+    def id(self):
+        return self.__id
+
+    @id.setter
+    def id(self, id):
+        self.__id = id
 
     @property
     def title(self) -> str:

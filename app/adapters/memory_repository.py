@@ -1,5 +1,4 @@
-import os, csv
-from datetime import datetime
+import abc
 from typing import List
 
 from app.adapters.repository import AbstractRepository
@@ -10,9 +9,7 @@ from app.domainmodel.genre import Genre
 from app.domainmodel.director import Director
 
 
-
 class MemoryRepository(AbstractRepository):
-
     def __init__(self):
         self._users = list()
         self._movies = list()
@@ -21,6 +18,7 @@ class MemoryRepository(AbstractRepository):
         self._actors = list()
         self._directors = list()
         self._reviews = list()
+        self.__movie_id
 
     def add_user(self, user: User):
         self._users.append(user)
@@ -31,8 +29,15 @@ class MemoryRepository(AbstractRepository):
     def add_movie(self, movie: Movie):
         self._movies.append(movie)
 
-    def get_movie(self, title: str, year: int) -> Movie:
-        pass
+    def get_movie(self, id: int) -> Movie:
+        movie = None
+
+        try:
+            movie = self.__movie_id[id]
+        except KeyError:
+            pass  # Ignore exception and return None.
+
+        return movie
 
     def get_number_of_movies(self):
         return len(self._movies)
@@ -40,7 +45,7 @@ class MemoryRepository(AbstractRepository):
     def get_movies_by_title(self, title: str) -> List[Movie]:
         movie_list = []
         for movie in self._movies:
-            if title ==movie.title:
+            if title == movie.title:
                 movie_list.append(movie)
         return movie_list
 
@@ -60,13 +65,21 @@ class MemoryRepository(AbstractRepository):
                     movie_list.append(movie)
         return movie_list
 
+    def get_movies_by_id(self, id_list):
+
+        existing_ids = [id for id in id_list if id in self._id]
+
+        # Fetch the movies.
+        movies = [self._id[id] for id in existing_ids]
+        return movies
+
     def get_movies_for_genre(self, genre_name: str):
-        moive_list = []
+        movie_list = []
         for movie in self._movies:
             if len(movie.genres) > 0:
                 if Genre(genre_name) in movie.genres:
-                    moive_list.append(movie)
-        return moive_list
+                    movie_list.append(movie)
+        return movie_list
 
     def add_actor(self, actor: Actor):
         self._actors.append(actor)
@@ -85,4 +98,3 @@ class MemoryRepository(AbstractRepository):
 
     def get_genres(self) -> List[Genre]:
         return self._genres
-
