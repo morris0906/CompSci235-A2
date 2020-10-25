@@ -38,10 +38,20 @@
           {% block content %} {% endblock %}
 
           <!-- Include sidebar partial. -->
-          <!-- {% include 'sidebar.html' %} -->
+          {% block sidebar %}
+           {% include 'sidebar.html' %}
+          {% endblock %}
         </div>
         
       </div>
     </div>
+
+    <script>
+      // https://select2.org/getting-started/basic-usage
+      $(document).ready(function() {
+          $('.js-example-basic-single').select2();
+
+      });
+    </script>
   </body>
 </html>

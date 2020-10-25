@@ -1,6 +1,5 @@
 import abc
 from typing import List
-from datetime import date
 
 from app.domainmodel.user import User
 from app.domainmodel.movie import Movie
@@ -11,10 +10,12 @@ from app.domainmodel.director import Director
 
 repository_instance = None
 
+
 class RepositoryException(Exception):
 
     def __init__(self, message=None):
         pass
+
 
 class AbstractRepository(abc.ABC):
 
@@ -32,12 +33,6 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def add_review(self, review: Review):
-        """" Adds a User to the repository. """
-        raise NotImplementedError
-
-
-    @abc.abstractmethod
     def add_movie(self, movie: Movie):
         """ Adds an Movie to the repository. """
         raise NotImplementedError
@@ -51,10 +46,18 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_movies_by_title(self, title: str) -> Movie:
-        """ Returns Movie with given title.
+    def get_movies_by_id(self, id_list):
+        """ Returns a list of Movies, whose ids match those in id_list, from the repository.
 
-        If there are no Movies with that title, this method returns an empty list.
+        If there are no matches, this method returns an empty list.
+        """
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_movies_id_all(self):
+        """ Returns a list of ids representing all Movies.
+
+        If there are no Movies, this method returns an empty list.
         """
         raise NotImplementedError
 
@@ -84,13 +87,6 @@ class AbstractRepository(abc.ABC):
         """ Returns a list of ids representing Movies that are tagged by actor name.
 
         If there are no Movies that are tagged by actor name, this method returns an empty list.
-        """
-        raise NotImplementedError
-
-    def get_reviews_for_movie(movie:Movie):
-        """ Returns a list of ids representing Movies that are tagged by actor name.
-
-                If there are no Movies that are tagged by actor name, this method returns an empty list.
         """
         raise NotImplementedError
 

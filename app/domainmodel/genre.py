@@ -1,13 +1,26 @@
+import app.domainmodel.movie as movies
+
 class Genre:
     def __init__(self, genre_name: str):
         if genre_name == "" or type(genre_name) is not str:
             self.__genre_name = None
         else:
             self.__genre_name = genre_name.strip()
+            self.__genre_movies = []
 
     @property
     def genre_name(self) -> str:
         return self.__genre_name
+
+    @property
+    def genre_movies(self):
+        return self.__genre_movies
+
+    def add_movie(self, movie: movies):
+        self.__genre_movies.append(movie)
+
+    def is_related(self, movie: movies) -> bool:
+        return movie in self.__genre_movies
 
     def __repr__(self):
         return f"<Genre {self.__genre_name}>"

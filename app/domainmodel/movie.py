@@ -27,8 +27,16 @@ class Movie:
         return self.__id
 
     @id.setter
-    def id(self, id):
+    def id(self, id: int):
         self.__id = id
+
+    @property
+    def year(self):
+        return self.__release_year
+
+    @year.setter
+    def year(self, year: int):
+        self.__release_year = year
 
     @property
     def title(self) -> str:
@@ -142,3 +150,10 @@ class Movie:
     def remove_genre(self, genre: Genre):
         if genre in self.__genres:
             self.__genres.remove(genre)
+
+    def add_director(self, director: Director):
+        self.__director.append(director)
+
+    def remove_director(self, director: Director):
+        if director in self.__director:
+            self.__actors.remove(director)

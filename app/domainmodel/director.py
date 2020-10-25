@@ -1,4 +1,4 @@
-
+import app.domainmodel.movie as movies
 class Director:
 
     def __init__(self, director_full_name: str):
@@ -6,10 +6,21 @@ class Director:
             self.__director_full_name = None
         else:
             self.__director_full_name = director_full_name.strip()
+            self.__director_movies = []
 
     @property
     def director_full_name(self) -> str:
         return self.__director_full_name
+
+    @property
+    def director_movies(self):
+        return self.__director_movies
+
+    def add_movie(self, movie: movies):
+        self.__director_movies.append(movie)
+
+    def is_related(self, movie: movies) -> bool:
+        return movie in self.__director_movies
 
     def __repr__(self):
         return f"<Director {self.__director_full_name}>"
