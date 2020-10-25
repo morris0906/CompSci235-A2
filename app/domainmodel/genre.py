@@ -1,4 +1,5 @@
 import app.domainmodel.movie as movies
+
 from typing import List
 
 class Genre:
@@ -7,7 +8,7 @@ class Genre:
             self.__genre_name = None
         else:
             self.__genre_name = genre_name.strip()
-            self.__genre_movies: List[Movies] = list()
+            self.__genre_movies: List[movies] = list()
 
     @property
     def genre_name(self) -> str:
